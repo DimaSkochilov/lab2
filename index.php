@@ -5,43 +5,43 @@ include 'func.php';
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>CRUD приложение на PHP</title>
+	<title>CRUD на PHP</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.css">
 </head>
-<body>
+<body style="background: #8b5858">
 	<div class="container">
-		<div class="row">
+		<div class="row"">
 			<div class="col mt-1">
 				<?=$success?>
 				<button class="btn btn-success mb-1" data-toggle="modal" data-target="#Modal"><i class="fa fa-plus"></i></button>
-                //
-				<table class="table shadow">
-					<thead class="thead-dark">
+				<div class="card border-0" style="background: #8b5858">
 						<?php foreach ($result as $value) { ?>
-						<tr>
-                            <td>anonymous</td>
-							<td><strong><?=$value['name'] ?></strong></td>
-                            <td><?=$value['date']?></td>
-							<td><?=$value['comment'] ?></td>
-                            <td><form method="post" action="?id=<?=$value['id']?>"><button type="submit" name="like-submit" class="btn btn-info btn-sm"><i class="fa fa-fire"></i> <?=$value['likes'] ?></i></button></form></td>
-							<td>
-								<a href="?edit=<?=$value['id'] ?>" class="btn btn-success btn-sm" data-toggle="modal" data-target="#editModal<?=$value['id'] ?>"><i class="fa fa-edit"></i></a> 
-								<a href="?delete=<?=$value['id'] ?>" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteModal<?=$value['id'] ?>"><i class="fa fa-trash"></i></a>
-								<?php require 'modal.php'; ?>
-							</td>
-						</tr> <?php } ?>
-					</thead>
-				</table>
-                //
+						<div class="card-body" style="background: bisque; border-radius: 10px; margin-bottom: 10px">
+                            <div class="row" style="background: burlywood; border-radius: 10px; font-size: x-large">
+                                <div class="col-sm-2"><ins>anonymous</ins></div>
+                                <div class="col-sm-4"><?=$value['date']?></div>
+                                <div class="col-sm-6">
+                                    <div class="row justify-content-end">
+                                        <div class="btn"><a href="?edit=<?=$value['id'] ?>" class="btn btn-success btn-sm" data-toggle="modal" data-target="#editModal<?=$value['id'] ?>"><i class="fa fa-edit"></i></a></div>
+                                        <div class="btn"><a href="?delete=<?=$value['id'] ?>" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteModal<?=$value['id'] ?>"><i class="fa fa-trash"></i></a></div>
+                                        <?php require 'modal.php'; ?>
+                                    </div>
+                                </div>
+                            </div>
+							<div style="font-size: 20px; margin-left: 5px"><strong><?=$value['name'] ?></strong></div>
+							<div><?=$value['comment'] ?></div>
+                            <div><form method="post" action="?id=<?=$value['id']?>"><button type="submit" name="like-submit" class="btn btn-info btn-sm" style="margin: 5px"><i class="fa fa-fire"></i> <?=$value['likes'] ?></i></button></form></div>
+						</div> <?php } ?>
+				</div>
 			</div>
 		</div>
 	</div>
 	<!-- Modal -->
 	<div class="modal fade" tabindex="-1" role="dialog" id="Modal">
 	  <div class="modal-dialog modal-dialog-centered" role="document">
-	    <div class="modal-content shadow">
+	    <div class="modal-content shadow" style="background: bisque">
 	      <div class="modal-header">
 	        <h5 class="modal-title">Добавить комментарий</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
