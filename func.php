@@ -26,13 +26,13 @@ $sql = $pdo->prepare("SELECT * FROM `users` ORDER BY `date` DESC LIMIT 100");
 $sql->execute();
 $result = $sql->fetchAll();
 
-// Update
 $edit_name = $_POST['edit_name'];
 $edit_comment = $_POST['edit_comment'];
 $edit_pos = $_POST['edit_pos'];
 $edit_date = $_POST['edit_date'];
 $get_id = $_GET['id'];
 
+// EDIT
 if (isset($_POST['edit-submit'])) {
 	$sqll = "UPDATE `users` SET (`name`=?, `comment`=?, `date`=?) WHERE `id`=?";
 	$querys = $pdo->prepare($sqll);
@@ -48,7 +48,7 @@ if (isset($_POST['delete_submit'])) {
 	header('Location: '. $_SERVER['HTTP_REFERER']);
 }
 
-// Like
+// REACT
 if (isset($_POST['like-submit'])) {
     $con = mysqli_connect("127.0.0.1","root", "root", "crud");
     $sql1 = "SELECT * FROM `users` WHERE `id`='$get_id'";
